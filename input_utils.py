@@ -1,8 +1,11 @@
+import random
+
+
 def input_int(prompt, min_val=None, max_val=None):
     while True:
         try:
             value = int(input(prompt))
-            if (min_val is not None and value < min_val) or (max_val is not None and value > max_val):
+            if (value < min_val) or (value > max_val):
                 print(f"Число должно быть в диапазоне от {min_val} до {max_val}.")
                 continue
             return value
@@ -71,18 +74,29 @@ def read_matrix_vector_from_file(filename):
         return None, None
 
 
+def generate_random_matrix(size, min_val=-10, max_val=10):
+    matrix = [[random.uniform(min_val, max_val) for _ in range(size)] for _ in range(size)]
+
+    for i in range(size):
+        matrix[i][i] = sum(abs(matrix[i][j]) for j in range(size) if i != j) + random.uniform(1, 5)
+
+    vector = [random.uniform(min_val, max_val) for _ in range(size)]
+    return matrix, vector
+
+
 def get_input_data():
     print("Выберите способ ввода данных:")
     print("1 - Ввести вручную")
     print("2 - Считать из файла")
+    print("3 - Сгенерировать случайную матрицу")
 
-    choice = input_int("Ваш выбор (1 или 2): ", 1, 2)
+    choice = input_int("Ваш выбор (1, 2 или 3): ", 1, 3)
 
     if choice == 1:
         size = input_int("Введите размер матрицы (целое число от 1 до 20): ", 1, 20)
         matrix = input_matrix(size)
         vector = input_vector(size)
-    else:
+    elif choice == 2:
         while True:
             filename = input("Введите имя файла: ")
             matrix, vector = read_matrix_vector_from_file(filename)
@@ -91,5 +105,12 @@ def get_input_data():
                 break
             else:
                 print("Ошибка в файле. Попробуйте ещё раз.")
+    else:
+        size = input_int("Введите размер случайной матрицы (от 1 до 20): ", 1, 20)
+        matrix, vector = generate_random_matrix(size)
+        print("Сгенерированная матрица:")
+        for row in matrix:
+            print(" ".join(f"{val:.2f}" for val in row))
+        print("Сгенерированный вектор свободных членов:", " ".join(f"{val:.2f}" for val in vector))
 
     return matrix, vector

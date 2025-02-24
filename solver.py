@@ -14,6 +14,7 @@ def simple_iteration_method(matrix, vector, epsilon=1e-6, max_iterations=1000):
 
     iteration_count = 0
 
+    error_vector = []
     while iteration_count < max_iterations:
         previous_solution = current_solution[:]
         new_solution = [
