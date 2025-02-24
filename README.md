@@ -6,11 +6,6 @@ This repository contains an implementation of a numerical method for solving sys
 
 ### 📋 Requirements
 - Python 3.6+
-- NumPy
-Install via pip if you haven't already:
-```bash
-pip install numpy
-```
 
 <hr>
 
