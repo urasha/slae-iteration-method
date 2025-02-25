@@ -1,6 +1,6 @@
 from input_utils import get_input_data
 from solver import simple_iteration_method
-from utils import check_diagonal_dominance, matrix_infinity_norm
+from utils import check_diagonal_dominance
 
 
 def main():

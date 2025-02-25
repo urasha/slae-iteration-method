@@ -7,7 +7,3 @@ def check_diagonal_dominance(matrix):
         if abs(matrix[row_index][row_index]) < sum_off_diagonal:
             return False
     return True
-
-
-def matrix_infinity_norm(matrix):
-    return max(sum(abs(value) for value in row) for row in matrix)
