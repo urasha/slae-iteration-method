@@ -1,13 +1,16 @@
 from input_utils import get_input_data
 from solver import simple_iteration_method
-from utils import check_diagonal_dominance
+from utils import check_diagonal_dominance, sort_for_diagonal_dominance
 
 
 def main():
     matrix, vector, epsilon = get_input_data()
 
     if not check_diagonal_dominance(matrix):
-        print("Предупреждение: матрица не обладает диагональным преобладанием. Метод может не сходиться.")
+        sort_for_diagonal_dominance(matrix)
+        if not check_diagonal_dominance(matrix):
+            print("Решений СЛАУ нет!")
+            return
 
     solution, iteration_count, matrix_norm, error_vector = simple_iteration_method(
         matrix, vector, epsilon=epsilon
