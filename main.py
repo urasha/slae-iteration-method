@@ -9,7 +9,7 @@ def main():
     if not check_diagonal_dominance(matrix):
         sort_for_diagonal_dominance(matrix)
         if not check_diagonal_dominance(matrix):
-            print("Решений СЛАУ нет!")
+            print("Нельзя найти решения с помощью МПИ!")
             return
 
     solution, iteration_count, matrix_norm, error_vector = simple_iteration_method(

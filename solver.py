@@ -3,8 +3,9 @@ def simple_iteration_method(matrix, vector, epsilon=1e-6, max_iterations=1000):
     current_solution = [0.0] * size
 
     iteration_matrix = []
-    constant_terms = []
+    constant_terms = [] # нулевое приближение
 
+    # Ax = b  ->  x = Bx + c
     for row_index in range(size):
         diagonal_element = matrix[row_index][row_index]
         transformed_row = [
@@ -23,9 +24,11 @@ def simple_iteration_method(matrix, vector, epsilon=1e-6, max_iterations=1000):
             for row_index in range(size)
         ]
         error_vector = [abs(new_solution[i] - previous_solution[i]) for i in range(size)]
+
         if max(error_vector) < epsilon:
             current_solution = new_solution
             break
+
         current_solution = new_solution
         iteration_count += 1
 
