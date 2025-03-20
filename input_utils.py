@@ -16,7 +16,8 @@ def input_int(prompt, min_val=None, max_val=None):
 def input_float(prompt):
     while True:
         try:
-            value = float(input(prompt))
+            data = input(prompt).replace(',', '.')
+            value = float(data)
             return value
         except ValueError:
             print("Ошибка ввода. Введите число.")
