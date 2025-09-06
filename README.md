@@ -12,8 +12,8 @@ This repository contains an implementation of a numerical method for solving sys
 ### 🚀 Installation and Running
 - Clone the repository:
 ```bash
-git clone https://github.com/urasha/Slae_Iteration_Method
-cd Slae_Iteration_Method
+git clone https://github.com/urasha/slae-iteration-method
+cd slae-iteration-method
 ```
 
 - Run the program:
